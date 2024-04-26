@@ -1,7 +1,7 @@
-package funcs
+package cli
 
 import (
-	"caesarcipher/data"
+	"caesarcipher/pkg/data"
 	"fmt"
 )
 
@@ -48,10 +48,9 @@ func Decoding(v data.Variables) {
 }
 
 func Finder(v data.Variables) {
-	var iteration int32
-	for iteration = 1; iteration < v.AlphabetLen; iteration++ {
-		fmt.Printf("%d - ", iteration)
-		v.EncDecShift = iteration
+	for data.Iteration = 1; data.Iteration < v.AlphabetLen; data.Iteration++ {
+		fmt.Printf("%d - ", data.Iteration)
+		v.EncDecShift = data.Iteration
 		Decoding(v)
 		fmt.Println()
 	}

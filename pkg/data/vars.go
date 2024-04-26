@@ -28,3 +28,37 @@ const (
 	EnLowerRight     = 122
 	EnAlphabetLenght = 26
 )
+
+/***
+Iteration 	= итерация цикла
+Selecter 	= выбодействия зашифровка / расшифровка / поиск шага шифрования
+Shift	 	= шаг шифрования
+Temp 		= переменная для интерактивного меню и передачи текста для шифрования / дешифрования
+***/
+
+var (
+	Iteration int32
+	Selecter  int32
+	Shift     int32
+	Temp      string
+)
+
+/***
+UpperLeft 	 = левая граница символов алфавита в верхнем регистре передается из констант
+UpperRight 	 = правая граница символов алфавита в верхнем регистре передается из констант
+LowerLeft	 = левая граница символов алфавита в нижнем регистре передается из констант
+LowerRight 	 = правая граница символов алфавита в нижнем регистре передается из констант
+AlphabetLen  = длина алфамита передается из констант
+EncDecShift	 = смещение символов
+EncDecString = строка для шифрания / дешифрования
+***/
+
+type Variables struct {
+	UpperLeft    int32
+	UpperRight   int32
+	LowerLeft    int32
+	LowerRight   int32
+	AlphabetLen  int32
+	EncDecShift  int32
+	EncDecString string
+}

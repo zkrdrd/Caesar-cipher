@@ -1,9 +1,9 @@
 package main
 
 import (
-	"caesarcipher/funcs"
+	"caesarcipher/pkg/cli"
 )
 
 func main() {
-	funcs.Start()
+	cli.ShowMenu()
 }
