@@ -1,6 +1,7 @@
 package cli
 
 import (
+	"caesarcipher/pkg/caeser"
 	"caesarcipher/pkg/data"
 	"fmt"
 	"os"
@@ -38,11 +39,11 @@ func regular() {
 		}
 	}
 	if data.Selecter == 1 {
-		Encoding(varsd)
+		caeser.Encoding(varsd)
 	} else if data.Selecter == 2 {
-		Decoding(varsd)
+		caeser.Decoding(varsd)
 	} else {
-		Finder(varsd)
+		caeser.Finder(varsd)
 	}
 	now()
 }

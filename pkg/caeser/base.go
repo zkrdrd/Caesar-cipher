@@ -1,4 +1,4 @@
-package cli
+package caeser
 
 import (
 	"caesarcipher/pkg/data"

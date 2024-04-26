@@ -1,7 +1,7 @@
 package main
 
 import (
-	"caesarcipher/pkg/cli"
+	"caesarcipher/cmd/cli"
 )
 
 func main() {
