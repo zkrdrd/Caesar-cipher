@@ -1,46 +1,41 @@
 package cli
 
 import (
-	"caesarcipher/pkg/caeser"
-	"caesarcipher/pkg/data"
+	caeser "caesarcipher"
 	"fmt"
 	"os"
 	"strconv"
 )
 
-/***
-regular - обработка введеных ранее данных
-now 	- интерактивное меню
-***/
-
+// обработка введеных ранее данных
 func regular() {
-	varsd := data.Variables{}
-	for _, chars := range data.Temp {
-		if data.RuUpperLeft <= chars && chars <= data.RuUpperRight || data.RuLowerLeft <= chars && chars <= data.RuLowerRight {
-			varsd = data.Variables{UpperLeft: data.RuUpperLeft,
-				UpperRight:   data.RuUpperRight,
-				LowerLeft:    data.RuLowerLeft,
-				LowerRight:   data.RuLowerRight,
-				AlphabetLen:  data.RuAlphabetLenght,
-				EncDecShift:  data.Shift,
-				EncDecString: data.Temp}
+	varsd := caeser.Variables{}
+	for _, chars := range caeser.Temp {
+		if caeser.RuUpperLeft <= chars && chars <= caeser.RuUpperRight || caeser.RuLowerLeft <= chars && chars <= caeser.RuLowerRight {
+			varsd = caeser.Variables{UpperLeft: caeser.RuUpperLeft,
+				UpperRight:   caeser.RuUpperRight,
+				LowerLeft:    caeser.RuLowerLeft,
+				LowerRight:   caeser.RuLowerRight,
+				AlphabetLen:  caeser.RuAlphabetLenght,
+				EncDecShift:  caeser.Shift,
+				EncDecString: caeser.Temp}
 			break
 		}
 
-		if data.EnLowerLeft <= chars && chars <= data.EnLowerRight || data.EnUpperLeft <= chars && chars <= data.EnUpperRight {
-			varsd = data.Variables{UpperLeft: data.EnUpperLeft,
-				UpperRight:   data.EnUpperRight,
-				LowerLeft:    data.EnLowerLeft,
-				LowerRight:   data.EnLowerRight,
-				AlphabetLen:  data.EnAlphabetLenght,
-				EncDecShift:  data.Shift,
-				EncDecString: data.Temp}
+		if caeser.EnLowerLeft <= chars && chars <= caeser.EnLowerRight || caeser.EnUpperLeft <= chars && chars <= caeser.EnUpperRight {
+			varsd = caeser.Variables{UpperLeft: caeser.EnUpperLeft,
+				UpperRight:   caeser.EnUpperRight,
+				LowerLeft:    caeser.EnLowerLeft,
+				LowerRight:   caeser.EnLowerRight,
+				AlphabetLen:  caeser.EnAlphabetLenght,
+				EncDecShift:  caeser.Shift,
+				EncDecString: caeser.Temp}
 			break
 		}
 	}
-	if data.Selecter == 1 {
+	if caeser.Selecter == 1 {
 		caeser.Encoding(varsd)
-	} else if data.Selecter == 2 {
+	} else if caeser.Selecter == 2 {
 		caeser.Decoding(varsd)
 	} else {
 		caeser.Finder(varsd)
@@ -48,11 +43,12 @@ func regular() {
 	now()
 }
 
+// интерактивное меню
 func now() string {
 	for {
 		fmt.Print("\nВыбирите действие\n1 - еще раз\n0 - выход\n:")
-		fmt.Scanf("%s\n", &data.Temp)
-		i, err := strconv.ParseInt(data.Temp, 10, 32)
+		fmt.Scanf("%s\n", &caeser.Temp)
+		i, err := strconv.ParseInt(caeser.Temp, 10, 32)
 		if err == nil {
 			if i == 1 {
 				ShowMenu()

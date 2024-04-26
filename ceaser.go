@@ -1,17 +1,11 @@
 package caeser
 
 import (
-	"caesarcipher/pkg/data"
 	"fmt"
 )
 
-/***
-Encoding - коидрование строки
-Decoding - декодирование строки
-Finder	 - Поиск шага строки
-***/
-
-func Encoding(v data.Variables) {
+// Коидрование строки
+func Encoding(v Variables) {
 	for _, chars := range v.EncDecString {
 		// upper letter
 		if v.UpperLeft <= chars && chars <= v.UpperRight {
@@ -29,7 +23,8 @@ func Encoding(v data.Variables) {
 	}
 }
 
-func Decoding(v data.Variables) {
+// Декодирование строки
+func Decoding(v Variables) {
 	for _, chars := range v.EncDecString {
 		// upper letter
 		if v.UpperLeft <= chars && chars <= v.UpperRight {
@@ -47,10 +42,11 @@ func Decoding(v data.Variables) {
 	}
 }
 
-func Finder(v data.Variables) {
-	for data.Iteration = 1; data.Iteration < v.AlphabetLen; data.Iteration++ {
-		fmt.Printf("%d - ", data.Iteration)
-		v.EncDecShift = data.Iteration
+// Поиск шага строки
+func Finder(v Variables) {
+	for Iteration = 1; Iteration < v.AlphabetLen; Iteration++ {
+		fmt.Printf("%d - ", Iteration)
+		v.EncDecShift = Iteration
 		Decoding(v)
 		fmt.Println()
 	}

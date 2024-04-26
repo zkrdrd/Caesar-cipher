@@ -1,4 +1,9 @@
-package data
+package caeser
+
+import (
+	"bufio"
+	"os"
+)
 
 /***
 ascii table 	 - https://www.w3schools.com/charsets/ref_utf_cyrillic.asp
@@ -41,6 +46,7 @@ var (
 	Selecter  int32
 	Shift     int32
 	Temp      string
+	GetText   = bufio.NewScanner(os.Stdin)
 )
 
 /***
