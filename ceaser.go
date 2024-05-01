@@ -40,15 +40,26 @@ var (
 // Коидрование строки
 func Encoding(Shift int32, String string) string {
 	var Result string
+	if Shift > 32 {
+		panic("Range error: use Shift <= 32")
+	}
 	for _, chars := range String {
 		// en upper letter
 		if EnUpperLeft <= chars && chars <= EnUpperRight {
-			chars = chars + Shift
+			if Shift > EnAlphabetLenght {
+				chars = chars + (Shift - EnAlphabetLenght)
+			} else {
+				chars = chars + Shift
+			}
 			if chars > EnUpperRight {
 				chars -= EnAlphabetLenght
 			}
 		} else if EnUpperLeft <= chars && chars <= EnLowerRight { // en lower letter
-			chars = chars + Shift
+			if Shift > EnAlphabetLenght {
+				chars = chars + (Shift - EnAlphabetLenght)
+			} else {
+				chars = chars + Shift
+			}
 			if chars > EnLowerRight {
 				chars -= EnAlphabetLenght
 			}
@@ -71,15 +82,26 @@ func Encoding(Shift int32, String string) string {
 // Декодирование строки
 func Decoding(Shift int32, String string) string {
 	var Result string
+	if Shift > 32 {
+		panic("Range error: use Shift <= 32")
+	}
 	for _, chars := range String {
 		//  en upper letter
 		if EnUpperLeft <= chars && chars <= EnUpperRight {
-			chars = chars - Shift
+			if Shift > EnAlphabetLenght {
+				chars = chars - (Shift + EnAlphabetLenght)
+			} else {
+				chars = chars - Shift
+			}
 			if chars < EnUpperLeft {
 				chars += EnAlphabetLenght
 			}
 		} else if EnLowerLeft <= chars && chars <= EnLowerRight { // en lower letter
-			chars = chars - Shift
+			if Shift > EnAlphabetLenght {
+				chars = chars - (Shift + EnAlphabetLenght)
+			} else {
+				chars = chars - Shift
+			}
 			if chars < EnLowerLeft {
 				chars += EnAlphabetLenght
 			}
